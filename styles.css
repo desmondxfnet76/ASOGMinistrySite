@@ -22,6 +22,41 @@ body {
 }
 
 /* Header */
+.header-content {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-text {
+    margin-left: 20px;
+    text-align: center; /* Centers the header text */
+    margin-top: 20px; /* Added space from the logo */
+}
+.header-text h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    background: linear-gradient(to right, #ffcc00, #ff6600);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    animation: colorChange 4s infinite alternate;
+}
+.header-text p {
+    font-size: 1rem;
+    margin: 0;
+}
+@keyframes colorChange {
+    from {
+        color: #ffcc00;
+    }
+    to {
+        color: #ff6600;
+    }
+}
+
+/* Header Styling */
 header {
     background-color: #4b0082; /* Deep Purple */
     color: #ffd700; /* Gold */
@@ -32,10 +67,16 @@ header {
     animation: fadeInDown 1s; /* Add animation */
 }
 
-header .logo img {
-    width: 100px; /* Adjust based on your logo size */
+header .logo {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px; /* Added space between logo and nav */
 }
-
+header .circle-logo {
+    border-radius: 50%; /* Makes the logo circular */
+    width: 100px; /* Adjust the size as needed */
+    height: 100px;
+}
 header nav ul {
     display: flex;
     justify-content: center;
@@ -124,7 +165,7 @@ header nav ul li a:hover {
 /* Hero Section */
 .hero {
     position: relative;
-    background: url('pastor-first-lady.jpg') no-repeat center center/cover;
+    background: url('churchgroupphoto.jpg') no-repeat center center/cover;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -198,7 +239,7 @@ header nav ul li a:hover {
 }
 
 .home .container {
-    background: rgba(0, 0, 0, 0.5); /* Adds a translucent background for better readability */
+    background: #000000; /* Adds a solid black background for better readability */
     padding: 20px;
     border-radius: 10px;
 }
@@ -258,41 +299,118 @@ header nav ul li a:hover {
     padding: 10px 0;
 }
 
-/* About Content */
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+#about {
+    padding: 4rem 0;
+    background-color: #f9f9f9; /* Optional background for separation */
+}
+
+/*--------------------------------------------------------------
+# About Content Layout
+--------------------------------------------------------------*/
 .about-content {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    gap: 2rem; /* Adds space between elements */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
+/*--------------------------------------------------------------
+# Text Content Styling
+--------------------------------------------------------------*/
 .about-content p {
-    flex: 1;
+    flex: 1 1 300px;  /* Allows flexibility while maintaining a min width */
     padding: 1rem;
+    font-size: 1rem;
+    line-height: 1.6;
     text-align: left;
-    animation: fadeInUp 2s; /* Add animation */
+    color: #333;
+    animation: fadeInUp 1s ease forwards;  /* Smooth fade-in animation */
 }
 
+/*--------------------------------------------------------------
+# Pastor Image Container
+--------------------------------------------------------------*/
 .pastor-image {
-    flex: 1;
+    display: flex; /*Align image and text side by side */
+    align-items: center; /* Vertically align content */
+    gap: 20px; /* Space between image and text */
+    margin-bottom: 20px; /* space between each person block */
+    flex: 1 1 300px;  
     text-align: center;
     padding: 1rem;
 }
 
+/*--------------------------------------------------------------
+# Pastor Image Styling
+--------------------------------------------------------------*/
 .pastor-image img {
     max-width: 100%;
-    height: auto;
+    width: 150px; /* Adjust the image size */
+    height: auto; /* Maintain aspect ratio */
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    animation: fadeInUp 2s; /* Add animation */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    animation: fadeInUp 1s ease forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Hover effect for interactivity */
+.pastor-image img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/*--------------------------------------------------------------
+# Image Caption
+--------------------------------------------------------------*/
 .pastor-image p {
     font-family: 'Dancing Script', cursive;
+    max-width: 500px; /* Optional: Limit text width */
     font-size: 1.5rem;
     margin-top: 1rem;
     color: #555;
 }
+
+/*--------------------------------------------------------------
+# FadeInUp Animation
+--------------------------------------------------------------*/
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*--------------------------------------------------------------
+# Responsive Adjustments
+--------------------------------------------------------------*/
+@media (max-width: 768px) {
+    .about-content {
+        display: block; /* Stack image and text vertically */
+        text-align: center; /* Center Content */
+        flex-direction: column;
+    }
+    .about-content p,
+    .pastor-image {
+        flex: 1 1 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .about-content p {
+        padding: 0.5rem;
+    }
+}
+
 
 /* Testimonials */
 #testimonials blockquote {
@@ -315,21 +433,97 @@ header nav ul li a:hover {
 }
 
 /* Contact Section */
+#contact {
+    background-color: #f9f9f9;
+    padding: 40px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#contact h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#contact form .form-group {
+    margin-bottom: 15px;
+}
+
 #contact form .form-control {
     border-radius: 5px;
     margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
 }
 
 #contact form .btn {
     background: #4b0082; /* Deep Purple */
     color: #ffd700; /* Gold */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 #contact form .btn:hover {
     background: #333;
 }
 
+#contact .contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Map Styling */
+.map-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    margin: 2rem 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
 /* Footer */
 footer {
     background-color: #4b0082; /* Deep Purple */
-    color
+    color: #ffd700; /* Gold */
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer a {
+    color: #ffd700; /* Gold */
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #fff; /* White */
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+footer .social-icons {
+    margin: 10px 0;
+}
+
+footer .social-icons a {
+    font-size: 18px;
+    margin: 0 5px;
